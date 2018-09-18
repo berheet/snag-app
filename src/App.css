@@ -7,5 +7,6 @@
 }
 
 .applicant-li li:hover{
-  background-color: red
+
+  text-transform: uppercase;
 }

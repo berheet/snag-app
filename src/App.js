@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import Applications from './components/Applications/Applications'
 import Favorited from './components/Favorited/Favorited';
+import Search from './components/Search/Search'
 
 class App extends Component {
   constructor(){
@@ -66,6 +67,7 @@ onFavorite = applicant => {
     return (
       <div className="App">
       <Header />
+      <Search />
       {all_applications}
       {saved_applications}
       </div>
