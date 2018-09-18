@@ -66,8 +66,8 @@ onFavorite = applicant => {
     })
     return (
       <div className="App">
-      <Header />
       <Search />
+      <Header />
       {all_applications}
       {saved_applications}
       </div>

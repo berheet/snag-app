@@ -1,12 +1,20 @@
-.header-div{background-color: black;
-top: 0;}
-.listofapps{
-    background-color: white;
-    height: 25%;
-margin: 0 10px;
 
-}
-.applicant-li {
-    list-style: none;
-}
+  
+  .wrapper {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-gap: 100px;
+    color: #444;
+    width: 75%;
+    margin:0 auto;
 
+
+  }
+  
+  .box {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+  }
