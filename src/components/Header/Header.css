@@ -1,0 +1,12 @@
+.header-div{background-color: black;
+top: 0;}
+.listofapps{
+    background-color: white;
+    height: 25%;
+margin: 0 10px;
+
+}
+.applicant-li {
+    list-style: none;
+}
+
