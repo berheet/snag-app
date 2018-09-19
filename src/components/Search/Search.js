@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './Search.css'
 
-class Search extends Component{
-    render(){
+const Search = ({searchField, searchChange}) =>{
         return(
             <div className='search-div'>
-            <input placeholder='Search...'/>
+            <input placeholder='Search...'      
+            type='search'
+        onChange={searchChange}/>
                 </div>
         )
-    }
 }
 
 export default Search;
