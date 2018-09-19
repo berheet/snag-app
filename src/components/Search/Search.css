@@ -1,9 +1,9 @@
-.form-inline{
-    width: 900px;
+.search-div{
+    width: 50%;
     margin: 0 auto;
-
 }
 
-.form-inline{
-    height: 50px;
+.search-div input{
+    width: 50%;
+    margin: 0 auto;
 }

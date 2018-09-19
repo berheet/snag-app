@@ -14,8 +14,9 @@ const Header = ({state}) => {
   <div className="box b">Number of Shortlisted Applicants
   <h5>{num_of_shortlisted}</h5>
   </div>
-  <a href='#'><div className="box c">C</div></a>
-        </div>
+ <div className="box b">Number of Shortlisted Applicants
+  <h5>{num_of_shortlisted}</h5>
+  </div>        </div>
 )
 }
 export default Header;

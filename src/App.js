@@ -88,8 +88,8 @@ onSearchChange = (event) => {
     return (
       <div className="App">
       <Sidebar/>
-      {/* <Search searchChange={this.onSearchChange}/> */}
-      <Header state={this.state}/>
+      <Search searchChange={this.onSearchChange}/>
+      <Header state={this.state} searchChange={this.onSearchChange} />
       {all_applications}
       {saved_applications}
       {/* {routes} */}
