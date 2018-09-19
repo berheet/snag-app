@@ -68,6 +68,7 @@ onSearchChange = (event) => {
       return application.name.toLowerCase().includes(searchField.toLowerCase());
     })
     const all_applications = filteredApplicants.map((applicant) => {
+      //write if statement here to conditionally render button
         return(<div className='applications'> <ul >
           <li  className='applicant-li' key={applicant.id}> <h5>{applicant.name} - {applicant.position}</h5>
             <p></p>
