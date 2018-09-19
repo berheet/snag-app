@@ -11,3 +11,6 @@
   text-transform: uppercase;
 }
 
+.applications ul{
+  list-style: none;
+}

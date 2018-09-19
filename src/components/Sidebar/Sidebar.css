@@ -8,6 +8,12 @@
     background-color: #282561;
     overflow-x: hidden;
     }
+
+    .sidebar ul{
+        justify-content: center;
+        list-style: none;
+
+    }
 .sidenav a {
     text-decoration: none;
     font-size: 25px;
@@ -27,6 +33,20 @@ height: 10%;
 .snag-div img{
    height: 110%;
    width:100%;
+}
+
+.sidenav i{
+    color: white;
+
+}
+
+.fa-ul hr{
+    border-top: 1px solid gray;
+    width: 100%;
+}
+
+.fa-ul{
+ color: white;
 }
 
 @media screen and (max-width: 400px) {

@@ -6,6 +6,9 @@ import Applications from './components/Applications/Applications'
 import Favorited from './components/Favorited/Favorited';
 import Search from './components/Search/Search'
 import Sidebar from './components/Sidebar/Sidebar';
+import { withRouter } from "react-router";
+import routes from "./routes";
+
 
 class App extends Component {
   constructor(){
@@ -36,7 +39,8 @@ class App extends Component {
           "text":"Are you authorized to work in the United States?", "answer":"Yes" } ] }
           ],
           searchField:'',
-          saved:[]
+          saved:[],
+          positions:[]
       }
     }
 onFavorite = applicant => {
@@ -53,16 +57,18 @@ onSearchChange = (event) => {
     searchField:event.target.value
   })
 }
+
   render() {
     console.log(this.state.saved)
     console.log(this.state.searchField)
-    const { applications, saved, searchField } = this.state;
+    console.log(this.state.positions)
+    const { applications, saved, searchField, positions } = this.state;
 
     const filteredApplicants = applications.filter(application => {
       return application.name.toLowerCase().includes(searchField.toLowerCase());
     })
     const all_applications = filteredApplicants.map((applicant) => {
-        return(<div className='applications'> <ul className='applications'>
+        return(<div className='applications'> <ul >
           <li  className='applicant-li' key={applicant.id}> <h5>{applicant.name} - {applicant.position}</h5>
             <p></p>
             <button onClick={ () => this.onFavorite(applicant) }>Favorite</button>
@@ -77,14 +83,16 @@ onSearchChange = (event) => {
                 </div>
         )
     })
+
     console.log(all_applications)
     return (
       <div className="App">
       <Sidebar/>
-      <Search searchChange={this.onSearchChange}/>
-      {/* <Header /> */}
+      {/* <Search searchChange={this.onSearchChange}/> */}
+      <Header state={this.state}/>
       {all_applications}
       {saved_applications}
+      {/* {routes} */}
       </div>
     );
   }
