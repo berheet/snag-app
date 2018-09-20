@@ -1,5 +1,7 @@
 import React from 'react';
-import './Sidebar.css'
+import './Sidebar.css';
+import {Link} from 'react-router-dom';
+
 
 const Sidebar = () => (
 <div className="sidenav">
@@ -9,7 +11,7 @@ const Sidebar = () => (
   <hr />
   <li><i class="fa fa-briefcase fa-3x" aria-hidden="true"></i><p>Shortlisted Applicants</p></li>
   <hr />  
-    <li><i class="fa fa-cogs fa-3x" aria-hidden="true"></i><p>Settings</p></li>
+  <li><Link to='/shortlistedApplicants'><i class="fa fa-cogs fa-3x" aria-hidden="true"></i><p>Settings</p></Link></li>
   <hr />
 </ul>
 </div>

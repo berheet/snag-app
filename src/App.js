@@ -8,6 +8,8 @@ import Search from './components/Search/Search'
 import Sidebar from './components/Sidebar/Sidebar';
 import { withRouter } from "react-router";
 import routes from "./routes";
+import Btn from './components/Btn/Btn';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 
 class App extends Component {
@@ -40,18 +42,18 @@ class App extends Component {
           ],
           searchField:'',
           saved:[],
-          positions:[]
+          positions:[],
       }
     }
-onFavorite = applicant => {
-  const { saved } = this.state; 
-  console.log(this.state.saved)
-  if(this.state.saved.includes(applicant)){
-    alert('This applicant has already been flagged!')
-  } else
-   this.setState({
-    saved:[...saved, applicant]})
-}
+    onFavorite = applicant => {
+      const { saved } = this.state; 
+    
+      if(!saved.includes(applicant)) {
+       this.setState({
+        saved: [...saved, applicant],
+       });
+      }
+    }
 onSearchChange = (event) => {
   this.setState({
     searchField:event.target.value
@@ -67,15 +69,16 @@ onSearchChange = (event) => {
     const filteredApplicants = applications.filter(application => {
       return application.name.toLowerCase().includes(searchField.toLowerCase());
     })
-    const all_applications = filteredApplicants.map((applicant) => {
-      //write if statement here to conditionally render button
-        return(<div className='applications'> <ul >
-          <li  className='applicant-li' key={applicant.id}> <h5>{applicant.name} - {applicant.position}</h5>
-            <p></p>
-            <button onClick={ () => this.onFavorite(applicant) }>Favorite</button>
-          </li></ul> </div>
-        )
-      })
+
+const removeApplicant = filteredApplicants.map((applicant) => {
+  return(
+    <div className='applications'> <ul >
+    //       <li  className='applicant-li' key={applicant.id}> <h5>{applicant.name} - {applicant.position}</h5>
+    //         <p></p>
+    //         <button onClick={ () => this.onFavorite(applicant) }>Favorite</button>
+    //       </li></ul> </div>
+  )
+})
       const saved_applications = saved.map((applicant) =>{
         return(
             <div className='favorited'><ul> 
@@ -85,19 +88,28 @@ onSearchChange = (event) => {
         )
     })
 
-    console.log(all_applications)
     return (
+      <BrowserRouter>
       <div className="App">
       <Sidebar/>
       <Search searchChange={this.onSearchChange}/>
       <Header state={this.state} searchChange={this.onSearchChange} />
-      {all_applications}
+      {filteredApplicants.map((applicant) => {
+return(<div className='applications'> <ul >
+  <li  className='applicant-li' key={applicant.id}> <h5>{applicant.name} - {applicant.position}</h5>
+    <p></p>
+    <Btn onFavorite={() => this.onFavorite(applicant)} shortlist={saved.includes(applicant)} />
+  </li></ul> </div>
+)
+})}
       {saved_applications}
-      {/* {routes} */}
+      <Switch>
+      <Route path="/fav" component={Favorited} />
+      </Switch>
       </div>
+      </BrowserRouter>
     );
   }
 }
 
 export default App;
-
