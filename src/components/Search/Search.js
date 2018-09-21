@@ -88,7 +88,7 @@ function CustomizedInputs(props) {
             focused: classes.cssFocused
           }}
         >
-          Search...
+          Search By Position...
         </InputLabel>
         <Input
           id="custom-css-input"
