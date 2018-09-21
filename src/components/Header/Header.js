@@ -8,15 +8,13 @@ const Header = ({state}) => {
     return(
   
         <div className="wrapper">
-  <div className="box a">Number of Applicants: 
+  <div className="box a">Total Applicants: 
     <h5>{num_of_applicants}</h5>
   </div>
-  <div className="box b">Number of Shortlisted Applicants
+  <div className="box b">Shortlisted Applicants
   <h5>{num_of_shortlisted}</h5>
   </div>
- <div className="box b">Number of Shortlisted Applicants
-  <h5>{num_of_shortlisted}</h5>
-  </div>        </div>
+      </div>
 )
 }
 export default Header;

@@ -11,7 +11,7 @@ const Sidebar = () => (
   <hr />
   <li><i class="fa fa-briefcase fa-3x" aria-hidden="true"></i><p>Shortlisted Applicants</p></li>
   <hr />  
-  <li><Link to='/shortlistedApplicants'><i class="fa fa-cogs fa-3x" aria-hidden="true"></i><p>Settings</p></Link></li>
+  <li><i class="fa fa-cogs fa-3x" aria-hidden="true"></i><p>Settings</p></li>
   <hr />
 </ul>
 </div>

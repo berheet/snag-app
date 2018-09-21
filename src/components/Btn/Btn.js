@@ -1,4 +1,13 @@
 import React,{Component} from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const styles = theme => ({
+    button: {
+      margin: theme.spacing.unit,
+    }
+  });
 
 class Btn extends Component{
     constructor({shortlist}){
@@ -6,14 +15,19 @@ class Btn extends Component{
     }
     render(){
         const {shortlist} = this.props;
+        const { classes } = this.props;
 
         console.log(this.props.shortlist)
         return(
-
-            !shortlist ? (<button onClick={this.props.onFavorite}>Shortlist</button>): (<button >Remove</button>)
-            // <button onClick={this.props.onFavorite}> Shortlist </button>
+            !shortlist ? (<Button variant="contained" color="primary" className={classes.button} onClick={this.props.onFavorite}>Shortlist</Button>): null
+            
+          
+            // 
         )
     }
 }
-
-export default Btn;
+Btn.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+  
+  export default withStyles(styles)(Btn);

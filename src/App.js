@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
-import Applications from './components/Applications/Applications'
-import Favorited from './components/Favorited/Favorited';
 import Search from './components/Search/Search'
 import Sidebar from './components/Sidebar/Sidebar';
-import { withRouter } from "react-router";
-import routes from "./routes";
 import Btn from './components/Btn/Btn';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-
+import ShortlistedApplicants from './components/ShortlistedApplicants/ShortlistedApplicants';
 
 class App extends Component {
   constructor(){
@@ -45,18 +39,31 @@ class App extends Component {
           positions:[],
       }
     }
-    onFavorite = applicant => {
-      const { saved } = this.state; 
-    
-      if(!saved.includes(applicant)) {
-       this.setState({
-        saved: [...saved, applicant],
-       });
-      }
-    }
+onFavorite = applicant => {
+  const { saved } = this.state; 
+  const index = saved.indexOf(applicant);
+
+  if(index === -1) {
+   this.setState({
+    saved: [...saved, applicant],
+   })
+   
+  } else {
+    saved.splice(index, 1);
+    this.setState({saved});
+  }
+}
 onSearchChange = (event) => {
   this.setState({
     searchField:event.target.value
+  })
+}
+
+onRemove = applicant => {
+  const {saved} = this.state;
+  saved.splice(saved.indexOf(applicant), 1);
+  this.setState({
+    saved
   })
 }
 
@@ -67,47 +74,56 @@ onSearchChange = (event) => {
     const { applications, saved, searchField, positions } = this.state;
 
     const filteredApplicants = applications.filter(application => {
+      return application.position.toLowerCase().includes(searchField.toLowerCase());
+    })
+    const filterByName = applications.filter(application => {
       return application.name.toLowerCase().includes(searchField.toLowerCase());
     })
 
 const removeApplicant = filteredApplicants.map((applicant) => {
   return(
     <div className='applications'> <ul >
-    //       <li  className='applicant-li' key={applicant.id}> <h5>{applicant.name} - {applicant.position}</h5>
-    //         <p></p>
-    //         <button onClick={ () => this.onFavorite(applicant) }>Favorite</button>
-    //       </li></ul> </div>
+         <li  className='applicant-li' key={applicant.id}>
+<h5>{applicant.name} - {applicant.position}</h5>
+             <p></p>
+             <button onClick={ () => this.onFavorite(applicant) }>Favorite</button>
+           </li></ul> </div>
   )
 })
-      const saved_applications = saved.map((applicant) =>{
-        return(
-            <div className='favorited'><ul> 
-                <li> <h5>{applicant.name}</h5></li>
-                </ul>
-                </div>
-        )
-    })
+    //   const saved_applications = saved.map((applicant) =>{
+    //     return(
+    //         <div className='applicant-li'><ul> 
+    //             <li> <h5>{applicant.name}</h5></li>
+    //             <button onClick={() => this.onRemove(applicant)}>X</button>
+    //             </ul>
+    //             </div>
+    //     )
+    // })
+    const filterThroughApp = filteredApplicants.map((applicant) => {
+      return(
+      <div className='applications'> <ul >
+        <li  className='applicant-li' key={applicant.id}> 
+        <div className='applicant'>
+        <div><i className="fa fa-user-circle-o fa-5x" aria-hidden="true"></i></div>
+        <div className='icon-div'><h5><strong>{applicant.name}</strong> {applicant.position}</h5>
+        <h7>Years of Experience: {applicant.experience}</h7><br/>
+        <h7>{applicant.questions[0].text}</h7> {applicant.questions[0].answer}
+        </div>
+          </div>
+          <div className='btn'>Application Recieved On: {applicant.applied}<br/><Btn style={{marginLeft:'99%'}} onFavorite={() => this.onFavorite(applicant)} shortlist={saved.includes(applicant)} /></div></li></ul> </div>
+      )
+      })
 
     return (
-      <BrowserRouter>
       <div className="App">
       <Sidebar/>
       <Search searchChange={this.onSearchChange}/>
       <Header state={this.state} searchChange={this.onSearchChange} />
-      {filteredApplicants.map((applicant) => {
-return(<div className='applications'> <ul >
-  <li  className='applicant-li' key={applicant.id}> <h5>{applicant.name} - {applicant.position}</h5>
-    <p></p>
-    <Btn onFavorite={() => this.onFavorite(applicant)} shortlist={saved.includes(applicant)} />
-  </li></ul> </div>
-)
-})}
-      {saved_applications}
-      <Switch>
-      <Route path="/fav" component={Favorited} />
-      </Switch>
+      {filterThroughApp} 
+      <hr style={{borderTop:"black 5px solid"}}/>
+      <ShortlistedApplicants saved={saved} onRemove={this.onRemove}/>
+      {/* {saved_applications} */}
       </div>
-      </BrowserRouter>
     );
   }
 }
