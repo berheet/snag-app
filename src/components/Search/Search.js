@@ -1,51 +1,3 @@
-// import React from 'react';
-// import './Search.css'
-// import {
-//         withStyles,
-//         MuiThemeProvider,
-//         createMuiTheme
-//       } from "@material-ui/core/styles";
-//       import Input from "@material-ui/core/Input";
-//       import InputBase from "@material-ui/core/InputBase";
-//       import InputLabel from "@material-ui/core/InputLabel";
-//       import TextField from "@material-ui/core/TextField";
-//       import FormControl from "@material-ui/core/FormControl";
-
-// const Search = ({searchField, searchChange}) =>{
-//         const { classes } = props;
-
-//         return(
-//             <div className='search-div'>
-//             <FormControl className={classes.margin}>
-//         <InputLabel
-//           htmlFor="custom-css-input"
-//           FormLabelClasses={{
-//             root: classes.cssLabel,
-//             focused: classes.cssFocused
-//           }}
-//         >
-//           Custom CSS
-//         </InputLabel>
-//         <Input
-//           id="custom-css-input"
-//           classes={{
-//             underline: classes.cssUnderline
-//           }}
-//         />
-//       </FormControl>
-//       <MuiThemeProvider theme={theme}>
-//         <TextField
-//           className={classes.margin}
-//           label="MuiThemeProvider"
-//           id="mui-theme-provider-input"
-//         />
-//       </MuiThemeProvider>
-//                 </div>
-//         )
-// }
-
-// export default Search;
-
 import React from "react";
 import PropTypes from "prop-types";
 import {
@@ -95,7 +47,6 @@ const styles = theme => ({
     fontSize: 16,
     padding: "10px 12px",
     transition: theme.transitions.create(["border-color", "box-shadow"]),
-    // Use the system font instead of the default Roboto font.
     fontFamily: [
       "-apple-system",
       "BlinkMacSystemFont",

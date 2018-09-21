@@ -36,7 +36,6 @@ class App extends Component {
           ],
           searchField:'',
           saved:[],
-          positions:[],
       }
     }
 onFavorite = applicant => {
@@ -68,37 +67,18 @@ onRemove = applicant => {
 }
 
   render() {
-    console.log(this.state.saved)
-    console.log(this.state.searchField)
-    console.log(this.state.positions)
     const { applications, saved, searchField, positions } = this.state;
 
+    //will be used to search by position 
     const filteredApplicants = applications.filter(application => {
       return application.position.toLowerCase().includes(searchField.toLowerCase());
     })
-    const filterByName = applications.filter(application => {
-      return application.name.toLowerCase().includes(searchField.toLowerCase());
-    })
 
-const removeApplicant = filteredApplicants.map((applicant) => {
-  return(
-    <div className='applications'> <ul >
-         <li  className='applicant-li' key={applicant.id}>
-<h5>{applicant.name} - {applicant.position}</h5>
-             <p></p>
-             <button onClick={ () => this.onFavorite(applicant) }>Favorite</button>
-           </li></ul> </div>
-  )
-})
-    //   const saved_applications = saved.map((applicant) =>{
-    //     return(
-    //         <div className='applicant-li'><ul> 
-    //             <li> <h5>{applicant.name}</h5></li>
-    //             <button onClick={() => this.onRemove(applicant)}>X</button>
-    //             </ul>
-    //             </div>
-    //     )
+    //this can be used if you want to search by name instead of position
+    // const filterByName = applications.filter(application => {
+    //   return application.name.toLowerCase().includes(searchField.toLowerCase());
     // })
+
     const filterThroughApp = filteredApplicants.map((applicant) => {
       return(
       <div className='applications'> <ul >
@@ -107,10 +87,19 @@ const removeApplicant = filteredApplicants.map((applicant) => {
         <div><i className="fa fa-user-circle-o fa-5x" aria-hidden="true"></i></div>
         <div className='icon-div'><h5><strong>{applicant.name}</strong> {applicant.position}</h5>
         <h7>Years of Experience: {applicant.experience}</h7><br/>
-        <h7>{applicant.questions[0].text}</h7> {applicant.questions[0].answer}
+        <h7>{applicant.questions[0].text}</h7> {applicant.questions[0].answer}<br/>
+        <h7>Availability: M:{applicant.availability.M}, 
+        T:{applicant.availability.T},
+        W:{applicant.availability.W},
+        Th:{applicant.availability.Th},
+        F:{applicant.availability.F},
+        S:{applicant.availability.S},
+        Su:{applicant.availability.Su},
+        </h7>
         </div>
           </div>
-          <div className='btn'>Application Recieved On: {applicant.applied}<br/><Btn style={{marginLeft:'99%'}} onFavorite={() => this.onFavorite(applicant)} shortlist={saved.includes(applicant)} /></div></li></ul> </div>
+          <div className='btn'>Application Recieved On: {applicant.applied}<br/>
+          <Btn style={{marginLeft:'99%'}} onFavorite={() => this.onFavorite(applicant)} shortlist={saved.includes(applicant)} /></div></li></ul> </div>
       )
       })
 
@@ -122,7 +111,6 @@ const removeApplicant = filteredApplicants.map((applicant) => {
       {filterThroughApp} 
       <hr style={{borderTop:"black 5px solid"}}/>
       <ShortlistedApplicants saved={saved} onRemove={this.onRemove}/>
-      {/* {saved_applications} */}
       </div>
     );
   }

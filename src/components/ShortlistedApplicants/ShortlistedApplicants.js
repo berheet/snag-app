@@ -15,8 +15,15 @@ const ShortlistedApplicants = ({saved, onRemove}) => {
         <div><i className="fa fa-user-circle-o fa-5x" aria-hidden="true"></i></div>
         <div className='icon-div'><h5><strong>{applicant.name}</strong> {applicant.position}</h5>
         <h7>Years of Experience: {applicant.experience}</h7><br/>
-        <h7>{applicant.questions[0].text}</h7> {applicant.questions[0].answer}
-        </div>
+        <h7>{applicant.questions[0].text}</h7> {applicant.questions[0].answer}<br/>
+        <h7>Availability: M:{applicant.availability.M}, 
+        T:{applicant.availability.T},
+        W:{applicant.availability.W},
+        Th:{applicant.availability.Th},
+        F:{applicant.availability.F},
+        S:{applicant.availability.S},
+        Su:{applicant.availability.Su},
+        </h7>        </div>
           </div>
           <div className='btn'><button onClick={() => onRemove(applicant)}>X</button></div></li></ul> </div>
         )

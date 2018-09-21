@@ -3,10 +3,10 @@
   .wrapper {
     display: grid;
     grid-template-columns: 200px 200px 200px;
-    grid-gap: 50%;
+    grid-gap: 25%;
     color: #444;
-    width: 50%;
-    margin:0 auto;
+    width: 75%;
+    margin-left: 32%;
 
 
   }
