@@ -1,21 +1,34 @@
 .applicant-li {
   border: solid 1px black;
   width: 75%;
-  margin: 0 0 0 17%;
+  /* margin: 0 0 1% 0%; */
   padding: 1%;
   background-color: #ffffff;
   border-radius: 30px;
   display: flex;
 }
 
-body{
+.home-columns{
+  display: flex;
+}
+.sidebar-div{
+  width: 50%;
+  margin: 0 auto;
+}
+
+
+/* body{
   text-align: center;
 
-}
+} */
 
 .applications ul{
   list-style: none;
   margin-top: 1%;
+}
+
+.body{
+  /* justify-items: center !important */
 }
 
 .applicant-li ul{
@@ -28,10 +41,26 @@ body{
 }
 
 
-.icon-div{
-  margin: 15px 25vw 0 30px;
+.applicant-info-div{
+  /* margin: 15px 25vw 0 30px; */
 }
-.btn{
+/* .btn{
   margin: 1% auto;
+} */
+
+.button-div{
+  float: right;
+}
+
+@media(max-width:835px){
+  .applicant-li{
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+  };
+  .app{
+    justify-content:center;
+    text-align: center;
+  }
 }
 

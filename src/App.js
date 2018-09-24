@@ -81,11 +81,9 @@ onRemove = applicant => {
 
     const filterThroughApp = filteredApplicants.map((applicant) => {
       return(
-      <div className='applications'> <ul >
-        <li  className='applicant-li' key={applicant.id}> 
-        <div className='applicant'>
-        <div><i className="fa fa-user-circle-o fa-5x" aria-hidden="true"></i></div>
-        <div className='icon-div'><h5><strong>{applicant.name}</strong> {applicant.position}</h5>
+      <div className='applicant-li'>
+        <i className="fa fa-user-circle-o fa-5x" aria-hidden="true"></i>
+        <div key={applicant.id} className='applicant-info-div'><h5><strong>{applicant.name}</strong> {applicant.position}</h5>
         <h7>Years of Experience: {applicant.experience}</h7><br/>
         <h7>{applicant.questions[0].text}</h7> {applicant.questions[0].answer}<br/>
         <h7>Availability: M:{applicant.availability.M}, 
@@ -97,20 +95,23 @@ onRemove = applicant => {
         Su:{applicant.availability.Su},
         </h7>
         </div>
-          </div>
-          <div className='btn'>Application Recieved On: {applicant.applied}<br/>
-          <Btn style={{marginLeft:'99%'}} onFavorite={() => this.onFavorite(applicant)} shortlist={saved.includes(applicant)} /></div></li></ul> </div>
+                   <div className='button-div'>Application Recieved On: {applicant.applied}<br/>
+          <Btn style={{marginLeft:'99%'}} onFavorite={() => this.onFavorite(applicant)} shortlist={saved.includes(applicant)} /></div> </div>
       )
       })
 
     return (
-      <div className="App">
+      <div className>
+      <div className='sidebar-div'>
       <Sidebar/>
+      </div>
+      <div className="App">
       <Search searchChange={this.onSearchChange}/>
       <Header state={this.state} searchChange={this.onSearchChange} />
       {filterThroughApp} 
       <hr style={{borderTop:"black 5px solid"}}/>
       <ShortlistedApplicants saved={saved} onRemove={this.onRemove}/>
+      </div>
       </div>
     );
   }

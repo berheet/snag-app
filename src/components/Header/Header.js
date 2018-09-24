@@ -4,7 +4,6 @@ import './Header.css';
 const Header = ({state}) => { 
   const num_of_applicants = state.applications.length;
   const num_of_shortlisted = state.saved.length;
-  console.log(num_of_shortlisted) 
     return(
   
         <div className="wrapper">
