@@ -98,6 +98,24 @@ function CustomizedInputs(props) {
           onChange={searchChange}
         />
       </FormControl>
+      <FormControl className={classes.margin}>
+        <InputLabel
+          htmlFor="custom-css-input"
+          FormLabelClasses={{
+            root: classes.cssLabel,
+            focused: classes.cssFocused
+          }}
+        >
+          Search By Position...
+        </InputLabel>
+        <Input
+          id="custom-css-input"
+          classes={{
+            underline: classes.cssUnderline
+          }}
+          onChange={searchChange}
+        />
+      </FormControl>
     </div>
   );
 }

@@ -2,13 +2,13 @@
   
   .wrapper {
     display: grid;
-    grid-template-columns: 200px 200px 200px;
-    grid-gap: 25%;
+    grid-template-columns: 300px 300px;
+    grid-gap: 10%;
     color: #444;
-    /* width: %; */
-    margin-left: 30%;
+width: 700px;    
+/* margin-left: 30%; */
     /* padding: 0 10% 0 10%; */
-/* margin: 0 auto */
+margin: 0 auto
 
   }
   
@@ -25,4 +25,14 @@
   .box h5{
     font-weight: 600;
     color: blue;
+  }
+
+  @media (max-width:671px){
+    .wrapper{
+      flex-wrap: wrap;
+      grid-template-columns: 150px 150px;
+      grid-gap: 15%;
+      width: 75%;
+      margin: 0 auto;
+    }
   }

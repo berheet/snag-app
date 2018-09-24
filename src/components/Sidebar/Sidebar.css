@@ -183,7 +183,7 @@ a {
 }
 
 /* Mobile First */
-@media (min-width: 42em) {
+@media (min-width: 933px) {
    .s-layout__content {
       margin-left: 4em;
    }
@@ -202,11 +202,11 @@ a {
    .s-sidebar__nav:focus,
    .s-sidebar__trigger:hover + .s-sidebar__nav,
    .s-sidebar__trigger:focus + .s-sidebar__nav {
-      width: 15em;
+      width: 4em;
    }
 }
 
-@media (min-width: 68em) {
+@media (min-width: 933px) {
    .s-layout__content {
       margin-left: 15em;
    }
@@ -215,11 +215,7 @@ a {
    .s-sidebar__trigger {
       display: none
    }
-   
-   .s-sidebar__nav {
-      width: 15em;
-   }
-   
+
    .s-sidebar__nav ul {
       top: 1.3em;
    }

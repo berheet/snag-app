@@ -24,24 +24,24 @@ const Sidebar = () => (
 
   <nav class="s-sidebar__nav">
      <ul>
-     <li>
+     {/* <li>
            <a class="s-sidebar__nav-link" href="#0">
            <img src='http://linhartpr.com/wp-content/uploads/2015/01/Snagajob.png'/>
            </a>
-        </li>
+        </li> */}
         <li>
            <a class="s-sidebar__nav-link" href="#0">
-              <i class="fa fa-home"></i><em>Home</em>
+              <i class="fa fa-home"></i>
            </a>
         </li>
         <li>
            <a class="s-sidebar__nav-link" href="#0">
-             <i class="fa fa-user"></i><em>My Profile</em>
+             <i class="fa fa-user"></i>
            </a>
         </li>
         <li>
            <a class="s-sidebar__nav-link" href="#0">
-              <i class="fa fa-camera"></i><em>Camera</em>
+              <i class="fa fa-cogs fa-1x" aria-hidden="true"></i>
            </a>
         </li>
      </ul>

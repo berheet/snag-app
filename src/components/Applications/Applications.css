@@ -1,0 +1,22 @@
+.app-table{
+    border-collapse: collapse; /* Collapse borders */
+    width: 100%; /* Full-width */
+    border: 1px solid black; /* Add a grey border */
+    font-size: 16px; /* Increase font-size */
+    overflow: auto;
+}
+
+.app-table th, .app-table td{
+    text-align: left; /* Left-align text */
+    padding: 5px; /* Add padding */
+}
+
+.app-table tr {
+    border-bottom: 1px solid black; 
+
+}
+
+.app-table tr.header, .app-table tr:hover {
+    /* Add a grey background color to the table header and on hover */
+    background-color: gray;
+}
