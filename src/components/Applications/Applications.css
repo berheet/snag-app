@@ -3,11 +3,17 @@
     width: 100%; /* Full-width */
     border: 1px solid black; /* Add a grey border */
     font-size: 16px; /* Increase font-size */
-    overflow: auto;
+    background-color: white;
+}
+
+.scroll{
+    overflow:scroll;
+    height: 300px;
+    overflow-x: hidden;
 }
 
 .app-table th, .app-table td{
-    text-align: left; /* Left-align text */
+    text-align: center; /* Left-align text */
     padding: 5px; /* Add padding */
 }
 

@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import './Header.css';
 
-const Header = ({state}) => { 
-  const num_of_applicants = state.applications.length;
-  const num_of_shortlisted =state.saved.length;
+const Header = props => { 
+  const num_of_applicants = props.applicationLen;
+  const num_of_shortlisted =props.saved.length;
+  console.log(props)
     return(
   
         <div className="wrapper">

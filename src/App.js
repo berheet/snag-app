@@ -5,6 +5,8 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Btn from './components/Btn/Btn';
 import ShortlistedApplicants from './components/ShortlistedApplicants/ShortlistedApplicants';
 import Applications from './components/Applications/Applications';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import PieChart from './components/PieChart/PieChart';
 
 class App extends Component {
   constructor(){
@@ -37,7 +39,54 @@ class App extends Component {
         ],
         searchField:'',
         saved:[],
+        direction: {
+          name:'asc',
+          position:'asc',
+          experience: 'asc',
+        }
     }
+    this.sortBy = this.sortBy.bind(this)
+  }
+  onFavorite = applicant => {
+    const { saved } = this.state; 
+    const index = saved.indexOf(applicant);
+  
+    if(index === -1) {
+     this.setState({
+      saved: [...saved, applicant],
+     })
+     
+    } else {
+      saved.splice(index, 1);
+      this.setState({saved});
+    }
+  }
+  onSearchChange = (event) => {
+    this.setState({
+      searchField:event.target.value
+    })
+  }
+  
+  onRemove = applicant => {
+    const {saved} = this.state;
+    saved.splice(saved.indexOf(applicant), 1);
+    this.setState({
+      saved
+    })
+  }
+  sortBy(key) {
+    this.setState({
+      applications: this.state.applications.sort( (a, b) => (
+        this.state.direction[key] === 'asc'
+          ? parseFloat(a[key]) - parseFloat(b[key])
+          : parseFloat(b[key]) - parseFloat(a[key]) 
+      )),
+      direction: {
+        [key]: this.state.direction[key] === 'asc'
+          ? 'desc'
+          : 'asc'
+      }
+    })
   }
   render() {
     // const { applications, saved, searchField, positions } = this.state;
@@ -74,15 +123,20 @@ class App extends Component {
     //   })
 
     return (
+      <BrowserRouter>
       <div className='main'>
       <Sidebar/>
       <div className="App">
       <Search searchChange={this.onSearchChange}/>
-           {/* {filterThroughApp}  */}
-      <Applications apps={this.state}/>
-      {/* <ShortlistedApplicants /> */}
       </div>
+      {/* <Applications props={this.state}/> */}
+      <Switch>
+        
+        <Route exact path='/' render={()=> <Applications applications={this.state.applications} saved={this.state.saved} onRemove={this.onRemove} onFavorite={this.onFavorite} sortBy={this.sortBy}/>} />
+        <Route path='/shortlistedApplicants' render={()=> <ShortlistedApplicants saved={this.state.saved} onRemove={this.onRemove} />}/>
+        </Switch>
       </div>
+      </BrowserRouter>
     );
   }
 }

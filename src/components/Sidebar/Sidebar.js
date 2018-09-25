@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import './Sidebar.css';
 
 // const Sidebar = () => (
@@ -18,26 +19,21 @@ import './Sidebar.css';
 const Sidebar = () => (
   <div class="s-layout">
 <div class="s-layout__sidebar">
-  <a class="s-sidebar__trigger" href="#0">
+  <Link to='/' class="s-sidebar__trigger" href="#0">
      <i class="fa fa-bars"></i>
-  </a>
+  </Link>
 
   <nav class="s-sidebar__nav">
      <ul>
-     {/* <li>
-           <a class="s-sidebar__nav-link" href="#0">
-           <img src='http://linhartpr.com/wp-content/uploads/2015/01/Snagajob.png'/>
-           </a>
-        </li> */}
-        <li>
-           <a class="s-sidebar__nav-link" href="#0">
+            <li>
+           <Link exact to='/' class="s-sidebar__nav-link" href="#0">
               <i class="fa fa-home"></i>
-           </a>
+           </Link>
         </li>
         <li>
-           <a class="s-sidebar__nav-link" href="#0">
+           <Link to='/shortlistedApplicants' class="s-sidebar__nav-link" href="#0">
              <i class="fa fa-user"></i>
-           </a>
+           </Link>
         </li>
         <li>
            <a class="s-sidebar__nav-link" href="#0">

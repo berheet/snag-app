@@ -104,6 +104,14 @@ a {
    background: #192b3c;
 }
 
+.s-sidebar__nav > h1{
+    top: 0;
+    left: 0;
+    display: inline-block;
+    /* width: 3em;
+    height: 3em; */
+}
+
 .s-sidebar__trigger > i {
    display: inline-block;
    margin: 1.5em 0 0 1.5em;
@@ -180,6 +188,10 @@ a {
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
+}
+
+.s-sidebar__nav ul li img {
+    align-content: center
 }
 
 /* Mobile First */
