@@ -19,7 +19,7 @@ class Btn extends Component{
         const { classes } = this.props;
 
         return(
-            !shortlist ? (<Button variant="contained" style={{zIndex:'0'}} className={classes.button} onClick={this.props.onFavorite}><strong>Shortlist</strong></Button>): null
+            !shortlist ? (<Button variant="contained" className={classes.button} onClick={this.props.onFavorite}><strong>Shortlist</strong></Button>): null
         )
     }
 }

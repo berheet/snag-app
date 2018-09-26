@@ -2,15 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import {
   withStyles,
-  MuiThemeProvider,
   createMuiTheme
 } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
-import InputBase from "@material-ui/core/InputBase";
 import InputLabel from "@material-ui/core/InputLabel";
-import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
-import purple from "@material-ui/core/colors/purple";
 import green from "@material-ui/core/colors/green";
 
 const styles = theme => ({
@@ -18,7 +14,7 @@ const styles = theme => ({
     display: "flex",
     flexWrap: "wrap",
     justifyContent:"center",
-    backgroundColor:'white',
+    backgroundColor:'cadetblue',
   },
   margin: {
     margin: theme.spacing.unit,
@@ -46,8 +42,8 @@ const styles = theme => ({
     borderRadius: 3,
     backgroundColor: theme.palette.common.white,
     border: "1px solid #ced4da",
-    fontSize: 16,
-    padding: "10px 12px",
+    fontSize: 12,
+    padding: "14px 12px",
     transition: theme.transitions.create(["border-color", "box-shadow"]),
     fontFamily: [
       "-apple-system",
@@ -78,8 +74,7 @@ const theme = createMuiTheme({
 });
 
 function CustomizedInputs(props) {
-  const { classes, searchField, onSearchChange } = props;
-  console.log(searchField)
+  const { classes} = props;
   return (
     <div className={classes.container}>
       <FormControl className={classes.margin}>
@@ -90,7 +85,7 @@ function CustomizedInputs(props) {
             focused: classes.cssFocused
           }}
         >
-          Search By Position...
+          Search...
         </InputLabel>
         <Input
           id="custom-css-input"

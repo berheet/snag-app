@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Search from './components/Search/Search'
 import Sidebar from './components/Sidebar/Sidebar';
-import Btn from './components/Btn/Btn';
 import ShortlistedApplicants from './components/ShortlistedApplicants/ShortlistedApplicants';
 import Applications from './components/Applications/Applications';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
@@ -12,7 +10,6 @@ class App extends Component {
   constructor(){
     super()
 
-    
     this.state = {
       applications: [{"id":1,"name":"Edin Lafrentz","position":"Office Assistant III","experience":1,"applied":"10/25/2017", "availability":{
         "M":2,
@@ -421,7 +418,6 @@ class App extends Component {
           position:'asc',
         }
     }
-    // this.sortBy = this.sortBy.bind(this)
   }
   onFavorite = applicant => {
     const { saved } = this.state; 
@@ -437,12 +433,12 @@ class App extends Component {
       this.setState({saved});
     }
   }
-  onSearchChange = (event) => {
-    const {applications, searchField} = this.state;
-    this.setState({
-      searchField:event.target.value
-    })
-     }
+  // onSearchChange = (event) => {
+  //   const {applications, searchField} = this.state;
+  //   this.setState({
+  //     searchField:event.target.value
+  //   })
+  //    }
   
   onRemove = applicant => {
     const {saved} = this.state;
@@ -451,6 +447,8 @@ class App extends Component {
       saved
     })
   }
+  
+  //sort methods
   sortByName = (key) =>(
     this.setState({
       applications: this.state.applications.sort((a, b) => a.name.localeCompare(b.name)),
@@ -470,10 +468,7 @@ class App extends Component {
   sortByQuestion = (key) =>(
     this.setState({
       applications: this.state.applications.sort((a, b) => a.questions[0].answer.localeCompare(b.questions[0].answer)),
-      // direction: {
-      //   position: !this.state.direction.questions[0].
-      // }
-    })
+      })
   )
   sortByExp = (key) => (
     this.setState({
@@ -504,40 +499,15 @@ class App extends Component {
     })
   )
   render() {
-    console.log(this.state.applications)
-    console.log(this.state.direction.name)
-    const { applications, saved, searchField, positions } = this.state;
-
     //will be used to search by position 
-    const filteredApplicants = applications.filter(application => {
-      return application.position.toLowerCase().includes(searchField.toLowerCase());
-    })
+    // const filteredApplicants = applications.filter(application => {
+    //   return application.position.toLowerCase().includes(searchField.toLowerCase());
+    // })
 
     //this can be used if you want to search by name instead of position
     // const filterByName = applications.filter(application => {
     //   return application.name.toLowerCase().includes(searchField.toLowerCase());
     // })
-
-    // const filterThroughApp = filteredApplicants.map((applicant) => {
-    //   return(
-    //   <div className='applicant-li'>
-    //     <i className="fa fa-user-circle-o fa-5x" aria-hidden="true"></i>
-    //     <div key={applicant.id} className='applicant-info-div'><h5><strong>{applicant.name}</strong> {applicant.position}</h5>
-    //     <h7>Years of Experience: {applicant.experience}</h7><br/>
-    //     <h7>{applicant.questions[0].text}</h7> {applicant.questions[0].answer}<br/>
-    //     <h7>Availability: M:{applicant.availability.M}, 
-    //     T:{applicant.availability.T},
-    //     W:{applicant.availability.W},
-    //     Th:{applicant.availability.Th},
-    //     F:{applicant.availability.F},
-    //     S:{applicant.availability.S},
-    //     Su:{applicant.availability.Su},
-    //     </h7>
-    //     </div>
-    //                <div className='button-div'>Application Recieved On: {applicant.applied}<br/>
-    //       <Btn style={{marginLeft:'99%'}} onFavorite={() => this.onFavorite(applicant)} shortlist={saved.includes(applicant)} /></div> </div>
-    //   )
-    //   })
 
     return (
       <BrowserRouter>
@@ -546,8 +516,8 @@ class App extends Component {
       <div className="app">
       <Switch>
         
-        <Route exact path='/' render={()=> <Applications applications={this.state.applications} saved={this.state.saved} onRemove={this.onRemove} onFavorite={this.onFavorite} sortByName={this.sortByName} sortByPosition={this.sortByPosition} sortByExp={this.sortByExp} sortByQuestion={this.sortByQuestion}/>} onSearchChange={this.onSearchChange}/>
-        <Route path='/shortlistedApplicants' render={()=> <ShortlistedApplicants saved={this.state.saved} onRemove={this.onRemove} />}/>
+        <Route exact path='/' render={()=> <Applications applications={this.state.applications} saved={this.state.saved} onRemove={this.onRemove} onFavorite={this.onFavorite} sortByName={this.sortByName} sortByPosition={this.sortByPosition} sortByExp={this.sortByExp} sortByQuestion={this.sortByQuestion}/>} />
+        <Route path='/shortlistedApplicants' render={()=> <ShortlistedApplicants saved={this.state.saved} onRemove={this.onRemove} sortByName={this.sortByName} sortByPosition={this.sortByPosition} sortByExp={this.sortByExp} sortByQuestion={this.sortByQuestion}/>}/>
         <Route path='/settings' component={Settings} />
         </Switch>
         </div>

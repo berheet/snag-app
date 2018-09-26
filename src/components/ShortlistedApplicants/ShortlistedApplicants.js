@@ -1,11 +1,11 @@
 import React from 'react';
-import Btn from '../Btn/Btn';
+import Search from '../Search/Search'
 './ShortlistedApplicants.css'
 
 
-const ShortlistedApplicants = ({saved, onRemove}) => {
+const ShortlistedApplicants = (props) => {
     let applicants;
-
+    const {saved, onRemove, sortByName,sortByPosition,sortByExp, sortByQuestion} = props;
     if(saved == 0) {
         return(
             applicants = <div style={{textAlign:'center'}}><h1 className='shortlisted'>Shortlisted Applicants Page</h1>Nothing to Show</div>
@@ -17,12 +17,13 @@ const ShortlistedApplicants = ({saved, onRemove}) => {
             <h1 className='shortlisted'>Shortlisted Applicants Page</h1>
             <table className='app-table'>
                        <tr>
-                    <th onClick={() => this.props.sortBy('name')}>Name</th>
-                    <th onClick={() => this.props.sortBy('position')}>Position</th>
-                    <th onClick={() => this.props.sortBy('experience')}>Exp.</th>
-                    <th>Question</th>
+                    <th onClick={() => sortByName('name')}>Name</th>
+                    <th onClick={() => sortByPosition('position')}>Position</th>
+                    <th onClick={() => sortByExp('experience')}>Exp.</th>
+                    <th onClick={()=> sortByQuestion('answer')}>Question</th>
                     <th>Availability</th>
-                    <th>Applied</th>
+                    <th onClick={() => sortByExp('applied')}>Applied</th>
+                    <th><Search/></th>
                     <th></th>
                     </tr>
                     {saved.map((app) => {
@@ -49,46 +50,7 @@ const ShortlistedApplicants = ({saved, onRemove}) => {
                     </div>
         )
     }
-    // if(saved == 0){
-    //     return(
-    //     applicants = <div>Nothing to Show</div>
-    //     )} 
-    //     if(saved) {
-    //         applicants = saved.map((app) => {
-    //             return(
-    //                 <table className='app-table'>
-    //                 <tr>
-    //                     <th>Name</th>
-    //                     <th>Name</th>
-    //                     <th>Name</th>
-    //                     <th>Name</th>
-    //                     <th>Name</th>
-    //                     <th>Name</th>
-    //                     <th>Name</th>
-    //                     </tr>
-    //                    <tr>
-    //                        <td>{app.name}</td>
-    //                     <td>{app.position}</td>
-    //                     <td>{app.experience}</td>
-    //                     <td>{app.questions[0].text}
-    //                     {app.questions[0].answer}
-    //                     </td>
-    //                     <td>M:{app.availability.M}, 
-    //         T:{app.availability.T},
-    //         W:{app.availability.W},
-    //         Th:{app.availability.Th},
-    //         F:{app.availability.F},
-    //         S:{app.availability.S},
-    //         Su:{app.availability.Su}</td>
-    // <td>Applied On: {app.applied}</td>
-    // <td><button onClick={() => onRemove(app)}>X</button></td>
-    //                 </tr>
-    //                 </table>
-    //             )
-    //         })
-        
-    // }
-    return(
+      return(
         <div className='shortlisted'><h1 className='shortlisted'>Shortlisted Applicants Page</h1>
               <hr style={{borderTop:"black 5px solid"}}/>
               {applicants}

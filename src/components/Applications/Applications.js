@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './Applications.css'
 import Btn from '../Btn/Btn'
-import ShortlistedApplicants from '../ShortlistedApplicants/ShortlistedApplicants';
 import Header from '../Header/Header';
 import Search from '../Search/Search';
 
@@ -11,11 +10,10 @@ class Applications extends Component{
         super(props)
         }
     render(){
-      console.log(this.props)
-      const {sortByName,sortByPosition,sortByExp, sortByQuestion, searchChange} = this.props;
+      const {sortByName,sortByPosition,sortByExp, sortByQuestion} = this.props;
            return(
                <div>
-               <Header applicationLen={this.props.applications.length} saved={this.props.saved} searchChange={this.props.onSearchChange}/>
+               <Header applicationLen={this.props.applications.length} saved={this.props.saved} />
             <div className='scroll'>
            <table className='app-table'>
                        <tr>
@@ -49,7 +47,6 @@ class Applications extends Component{
                         </tr> )})}
                     </table>
                     </div>
-                    <footer className='footer'><h1>© Eyobell Berhe Production, 2018</h1></footer>
            </div>
         )
     }
