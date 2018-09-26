@@ -107,7 +107,7 @@ a {
 .s-sidebar__trigger > i {
    display: inline-block;
    margin: 1.5em 0 0 1.5em;
-   color: #f07ab0;
+   color: turquoise;
 }
 
 .s-sidebar__nav {
@@ -123,9 +123,10 @@ a {
 }
 
 .s-sidebar__nav img{
-    height: 10vh;
-    width:10vw;
-        background-color: white;
+    height: 15vh;
+    width: 27%;
+        background-color: turquoise;
+        vertical-align: unset;
 }
 
 .s-sidebar__nav:hover,
@@ -218,6 +219,6 @@ a {
    }
 
    .s-sidebar__nav ul {
-      top: 1.3em;
+      top: 0;
    }
 }

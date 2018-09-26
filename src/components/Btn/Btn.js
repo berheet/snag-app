@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 const styles = theme => ({
     button: {
       margin: theme.spacing.unit,
+      backgroundColor:'turquoise'
     }
   });
 
@@ -18,7 +19,7 @@ class Btn extends Component{
         const { classes } = this.props;
 
         return(
-            !shortlist ? (<Button variant="contained" color="primary" style={{zIndex:'0'}} className={classes.button} onClick={this.props.onFavorite}>Shortlist</Button>): null
+            !shortlist ? (<Button variant="contained" style={{zIndex:'0'}} className={classes.button} onClick={this.props.onFavorite}><strong>Shortlist</strong></Button>): null
         )
     }
 }

@@ -51,7 +51,7 @@
 }
 
 
-@media(max-width:835px){
+@media(max-width:900px){
   .app-table{
     justify-content: center;
     text-align: center;
@@ -63,27 +63,8 @@
   }
 }
 
-@media(max-width:671px){
-  .button-div{
-    /* z-index: -1; */
-  }
-}
 
-/* @media(max-width:360px){
-  .app{
-    margin: unset;
-    margin: 80px auto 0 auto;
-  }
-} */
-
-/* @media(max-width:41px){
-  .app{
-    margin: unset;
-    margin: 80px auto 0 auto;
-  }
-} */
-
-@media(max-width:932px){
+@media(max-width:900px){
   .app{
     margin: unset;
     margin: 80px auto 0 auto;

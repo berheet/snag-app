@@ -25,7 +25,7 @@ class Applications extends Component{
                     <th onClick={()=> sortByQuestion('answer')}>Question</th>
                     <th>Availability</th>
                     <th onClick={() => sortByExp('applied')}>Applied</th>
-                    <th><Search onSearchChange={searchChange} applications={this.props.applications}/></th>
+                    <th><Search/></th>
                     </tr>
                     {this.props.applications.map((app) => {
                         return(
@@ -44,7 +44,7 @@ class Applications extends Component{
              <strong>F:</strong> {app.availability.F},
              <strong>S:</strong> {app.availability.S},
              <strong>Su:</strong> {app.availability.Su}</td>
-     <td>Applied On: {app.applied}</td>
+     <td>{app.applied}</td>
      <td ><Btn style={{zIndex:'-1'}} onFavorite={() => this.props.onFavorite(app)} shortlist={this.props.saved.includes(app)}/></td>
                         </tr> )})}
                     </table>

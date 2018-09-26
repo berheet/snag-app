@@ -25,6 +25,10 @@ const Sidebar = () => (
 
   <nav class="s-sidebar__nav">
      <ul >
+     <li> <a href='https://www.snagajob.com/' target='blank' >
+           <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Gothic_s.svg/2000px-Gothic_s.svg.png'/>
+    </a>
+</li>
             <li>
            <Link exact to='/' class="s-sidebar__nav-link" href="#0">
               <i className="fa fa-home"></i>

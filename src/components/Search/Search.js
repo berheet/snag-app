@@ -78,8 +78,8 @@ const theme = createMuiTheme({
 });
 
 function CustomizedInputs(props) {
-  const { classes, searchField, searchChange } = props;
-
+  const { classes, searchField, onSearchChange } = props;
+  console.log(searchField)
   return (
     <div className={classes.container}>
       <FormControl className={classes.margin}>
@@ -97,27 +97,8 @@ function CustomizedInputs(props) {
           classes={{
             underline: classes.cssUnderline
           }}
-          onChange={searchChange}
         />
       </FormControl>
-      {/* <FormControl className={classes.margin}>
-        <InputLabel
-          htmlFor="custom-css-input"
-          FormLabelClasses={{
-            root: classes.cssLabel,
-            focused: classes.cssFocused
-          }}
-        >
-          Search By Position...
-        </InputLabel>
-        <Input
-          id="custom-css-input"
-          classes={{
-            underline: classes.cssUnderline
-          }}
-          onChange={searchChange}
-        />
-      </FormControl> */}
     </div>
   );
 }

@@ -28,7 +28,7 @@
     background-color: gray;
 }
 
-@media(max-width:928px){
+@media(max-width:900px){
     
     .app-table{
     border: none;
@@ -56,11 +56,6 @@
 	}
 }
 
-@media(max-width:900px){
-    .scroll{
-        overflow: hidden; 
-    }
-}
 
 @media(max-width:669px){
     .app-table tr{
@@ -68,7 +63,7 @@
     }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 929px) {
     .app-table th{
         position: absolute;
 		top: -9999px;
