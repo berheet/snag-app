@@ -23,9 +23,13 @@
 
 }
 
+.app-table th{
+    background-color: cadetblue
+}
+
 .app-table tr.header, .app-table tr:hover {
     /* Add a grey background color to the table header and on hover */
-    background-color: gray;
+    background-color: lightgrey;
 }
 
 @media(max-width:900px){

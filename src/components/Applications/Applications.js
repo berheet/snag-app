@@ -49,6 +49,7 @@ class Applications extends Component{
                         </tr> )})}
                     </table>
                     </div>
+                    <footer className='footer'><h1>© Eyobell Berhe Production, 2018</h1></footer>
            </div>
         )
     }
