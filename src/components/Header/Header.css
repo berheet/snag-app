@@ -2,14 +2,11 @@
   
   .wrapper {
     display: grid;
-    grid-template-columns: 300px 300px;
-    grid-gap: 10%;
+    grid-template-columns: 40% 40%;
+    grid-gap: 20%;
     color: #444;
-width: 700px;    
-/* margin-left: 30%; */
-    /* padding: 0 10% 0 10%; */
-margin: 0 auto
-
+width: 60%;    
+margin: 0 auto;
   }
   
   .box {
@@ -29,10 +26,6 @@ margin: 0 auto
 
   @media (max-width:671px){
     .wrapper{
-      flex-wrap: wrap;
-      grid-template-columns: 150px 150px;
-      grid-gap: 15%;
-      width: 75%;
-      margin: 0 auto;
+      display: unset;
     }
   }

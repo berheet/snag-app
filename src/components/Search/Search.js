@@ -22,6 +22,8 @@ const styles = theme => ({
   },
   margin: {
     margin: theme.spacing.unit,
+    
+
 
   },
   cssLabel: {
@@ -41,7 +43,7 @@ const styles = theme => ({
     }
   },
   bootstrapInput: {
-    borderRadius: 4,
+    borderRadius: 3,
     backgroundColor: theme.palette.common.white,
     border: "1px solid #ced4da",
     fontSize: 16,
@@ -98,7 +100,7 @@ function CustomizedInputs(props) {
           onChange={searchChange}
         />
       </FormControl>
-      <FormControl className={classes.margin}>
+      {/* <FormControl className={classes.margin}>
         <InputLabel
           htmlFor="custom-css-input"
           FormLabelClasses={{
@@ -115,7 +117,7 @@ function CustomizedInputs(props) {
           }}
           onChange={searchChange}
         />
-      </FormControl>
+      </FormControl> */}
     </div>
   );
 }

@@ -6,7 +6,7 @@ import Btn from './components/Btn/Btn';
 import ShortlistedApplicants from './components/ShortlistedApplicants/ShortlistedApplicants';
 import Applications from './components/Applications/Applications';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import PieChart from './components/PieChart/PieChart';
+import Settings from './components/Settings/Settings';
 
 class App extends Component {
   constructor(){
@@ -42,10 +42,9 @@ class App extends Component {
         direction: {
           name:'asc',
           position:'asc',
-          experience: 'asc',
         }
     }
-    this.sortBy = this.sortBy.bind(this)
+    // this.sortBy = this.sortBy.bind(this)
   }
   onFavorite = applicant => {
     const { saved } = this.state; 
@@ -74,7 +73,31 @@ class App extends Component {
       saved
     })
   }
-  sortBy(key) {
+  sortByName = (key) =>(
+    this.setState({
+      applications: this.state.applications.sort((a, b) => a.name.localeCompare(b.name)),
+      direction: {
+        name: !this.state.direction.name
+      }
+    })
+  )
+  sortByPosition = (key) =>(
+    this.setState({
+      applications: this.state.applications.sort((a, b) => a.position.localeCompare(b.position)),
+      direction: {
+        position: !this.state.direction.position
+      }
+    })
+  )
+  sortByQuestion = (key) =>(
+    this.setState({
+      applications: this.state.applications.sort((a, b) => a.questions[0].answer.localeCompare(b.questions[0].answer)),
+      // direction: {
+      //   position: !this.state.direction.questions[0].
+      // }
+    })
+  )
+  sortByExp = (key) => (
     this.setState({
       applications: this.state.applications.sort( (a, b) => (
         this.state.direction[key] === 'asc'
@@ -87,8 +110,23 @@ class App extends Component {
           : 'asc'
       }
     })
-  }
+  )
+  sortByApplied = (key) => (
+    this.setState({
+      applications: this.state.applications.sort( (a, b) => (
+        this.state.direction[key] === 'asc'
+          ? parseFloat(a[key]) - parseFloat(b[key])
+          : parseFloat(b[key]) - parseFloat(a[key]) 
+      )),
+      direction: {
+        [key]: this.state.direction[key] === 'asc'
+          ? 'desc'
+          : 'asc'
+      }
+    })
+  )
   render() {
+    console.log(this.state.direction.name)
     // const { applications, saved, searchField, positions } = this.state;
 
     //will be used to search by position 
@@ -126,15 +164,15 @@ class App extends Component {
       <BrowserRouter>
       <div className='main'>
       <Sidebar/>
-      <div className="App">
-      <Search searchChange={this.onSearchChange}/>
-      </div>
+      <div className="app">
       {/* <Applications props={this.state}/> */}
       <Switch>
         
-        <Route exact path='/' render={()=> <Applications applications={this.state.applications} saved={this.state.saved} onRemove={this.onRemove} onFavorite={this.onFavorite} sortBy={this.sortBy}/>} />
+        <Route exact path='/' render={()=> <Applications applications={this.state.applications} saved={this.state.saved} onRemove={this.onRemove} onFavorite={this.onFavorite} sortByName={this.sortByName} sortByPosition={this.sortByPosition} sortByExp={this.sortByExp} sortByQuestion={this.sortByQuestion}/>} searchChange={this.onSearchChange}/>
         <Route path='/shortlistedApplicants' render={()=> <ShortlistedApplicants saved={this.state.saved} onRemove={this.onRemove} />}/>
+        <Route path='/settings' component={Settings} />
         </Switch>
+        </div>
       </div>
       </BrowserRouter>
     );

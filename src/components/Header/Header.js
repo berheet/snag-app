@@ -11,7 +11,7 @@ const Header = props => {
         <div className="box a">Shortlisted Applicants
   <h5>{num_of_shortlisted}</h5>
   </div>
-  <div className="box b">Total Applicants: 
+  <div className="box b">Number of Applicants: 
     <h5>{num_of_applicants}</h5>
   </div>
   

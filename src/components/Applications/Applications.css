@@ -8,7 +8,8 @@
 
 .scroll{
     overflow:scroll;
-    height: 300px;
+    height: 400px;
+    width: 100%;
     overflow-x: hidden;
 }
 
@@ -26,3 +27,100 @@
     /* Add a grey background color to the table header and on hover */
     background-color: gray;
 }
+
+@media(max-width:928px){
+    
+    .app-table{
+    border: none;
+    };
+    table, thead, tbody, th, td, tr{
+        display: block
+    };
+    tr { border: 1px solid #ccc; };
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+    };
+    td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+}
+
+@media(max-width:900px){
+    .scroll{
+        overflow: hidden; 
+    }
+}
+
+@media(max-width:669px){
+    .app-table tr{
+        height: 20%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .app-table th{
+        position: absolute;
+		top: -9999px;
+		left: -9999px;
+    }
+
+    .scroll{
+        overflow:unset;
+        height: unset;
+        width: unset;
+        overflow-x: unset;
+    }
+    .app-table {
+      border: 0;
+    }
+     
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    .app-table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    .app-table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: center;
+    }
+    
+    .app-table td::before {
+      /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    .app-table td:last-child {
+      border-bottom: 0;
+    }
+  }

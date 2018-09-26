@@ -24,10 +24,10 @@ const Sidebar = () => (
   </Link>
 
   <nav class="s-sidebar__nav">
-     <ul>
+     <ul >
             <li>
            <Link exact to='/' class="s-sidebar__nav-link" href="#0">
-              <i class="fa fa-home"></i>
+              <i className="fa fa-home"></i>
            </Link>
         </li>
         <li>
@@ -36,9 +36,9 @@ const Sidebar = () => (
            </Link>
         </li>
         <li>
-           <a class="s-sidebar__nav-link" href="#0">
+           <Link to='/settings' class="s-sidebar__nav-link" href="#0">
               <i class="fa fa-cogs fa-1x" aria-hidden="true"></i>
-           </a>
+           </Link>
         </li>
      </ul>
   </nav>
